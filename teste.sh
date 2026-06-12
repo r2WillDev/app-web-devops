@@ -7,6 +7,7 @@ ARQUIVOS_OBRIGATORIOS=(
   "style.css"
   "script.js"
   "Dockerfile"
+  "Jenkinsfile"
 )
 
 for arquivo in "${ARQUIVOS_OBRIGATORIOS[@]}"; do
