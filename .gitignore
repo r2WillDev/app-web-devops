@@ -1,0 +1,16 @@
+# Logs
+*.log
+
+# Arquivos de ambiente e segredos
+.env
+*.env
+
+# Dependências comuns
+node_modules/
+
+# Arquivos temporários do Sonar Scanner
+.scannerwork/
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
