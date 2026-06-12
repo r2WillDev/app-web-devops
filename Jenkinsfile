@@ -6,6 +6,8 @@ pipeline {
         IMAGE_TAG = '1.0'
         CONTAINER_NAME = 'app-web-devops'
         APP_PORT = '8081'
+        SONAR_HOST_URL = 'http://localhost:9000'
+        SONAR_PROJECT_SETTINGS = 'ci/config/sonar-project.properties'
     }
 
     stages {
@@ -34,12 +36,21 @@ pipeline {
 
         stage('Análise SonarQube') {
             steps {
-                echo 'Executando análise SonarQube simulada...'
-                sh '''
-                    echo "SonarQube Scanner seria executado nesta etapa."
-                    echo "Por enquanto, esta etapa está simulada para fins didáticos."
-                    echo "Status da análise: OK"
-                '''
+                echo 'Executando análise real com SonarQube Scanner...'
+
+                withCredentials([string(credentialsId: 'sonar-token-app-web-devops', variable: 'SONAR_TOKEN')]) {
+                    sh '''
+                        docker run --rm \
+                          --network host \
+                          -e SONAR_TOKEN="${SONAR_TOKEN}" \
+                          -v "$PWD:/usr/src" \
+                          -w /usr/src \
+                          sonarsource/sonar-scanner-cli:latest \
+                          sonar-scanner \
+                          -Dproject.settings=${SONAR_PROJECT_SETTINGS} \
+                          -Dsonar.host.url=${SONAR_HOST_URL}
+                    '''
+                }
             }
         }
 
