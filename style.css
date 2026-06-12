@@ -1,0 +1,310 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(16, 163, 127, 0.25), transparent 30%),
+    linear-gradient(135deg, #0f172a, #111827);
+  color: #f9fafb;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 720px;
+  min-height: 420px;
+  padding: 48px 32px;
+  border: 3px solid #f9fafb;
+  border-radius: 24px;
+  background: rgba(15, 23, 42, 0.92);
+  box-shadow: 12px 12px 0 #10a37f;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 8px 14px;
+  border: 2px solid #10a37f;
+  border-radius: 999px;
+  color: #10a37f;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.75rem;
+}
+
+.tag.sucesso {
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+h1 {
+  margin-bottom: 16px;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  line-height: 1;
+}
+
+h2 {
+  margin-bottom: 16px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.descricao {
+  max-width: 560px;
+  margin-bottom: 32px;
+  color: #d1d5db;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brutalist-button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 260px;
+  padding: 18px 24px;
+  border: 4px solid #000000;
+  border-radius: 14px;
+  background: #f9fafb;
+  color: #111827;
+  cursor: pointer;
+  box-shadow: 8px 8px 0 #000000;
+  transform: translate(0, 0);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.brutalist-button:hover {
+  background: #ecfdf5;
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0 #000000;
+}
+
+.brutalist-button:active {
+  transform: translate(8px, 8px);
+  box-shadow: 0 0 0 #000000;
+}
+
+.openai-logo {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #111827;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.openai-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.button-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+}
+
+.button-text span:first-child {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #4b5563;
+}
+
+.button-text span:last-child {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #111827;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Loading com ampulheta */
+
+.hourglassBackground {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin-top: 16px;
+  border-radius: 50%;
+  background: #111827;
+  border: 3px solid #10a37f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hourglassContainer {
+  position: relative;
+  width: 80px;
+  height: 110px;
+  animation: hourglassRotate 2s linear infinite;
+}
+
+.hourglassCurves {
+  position: absolute;
+  inset: 0;
+  border: 4px solid #f9fafb;
+  border-radius: 40px;
+}
+
+.hourglassCapTop,
+.hourglassCapBottom {
+  position: absolute;
+  left: 8px;
+  width: 64px;
+  height: 10px;
+  background: #10a37f;
+  border-radius: 999px;
+}
+
+.hourglassCapTop {
+  top: -4px;
+}
+
+.hourglassCapBottom {
+  bottom: -4px;
+}
+
+.hourglassGlassTop {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  width: 40px;
+  height: 34px;
+  background: #38bdf8;
+  opacity: 0.25;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.hourglassGlass {
+  position: absolute;
+  bottom: 16px;
+  left: 20px;
+  width: 40px;
+  height: 34px;
+  background: #38bdf8;
+  opacity: 0.25;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
+
+.hourglassSand {
+  position: absolute;
+  bottom: 20px;
+  left: 25px;
+  width: 30px;
+  height: 18px;
+  background: #facc15;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  animation: sandFill 2s ease-in-out infinite;
+}
+
+.hourglassSandStream {
+  position: absolute;
+  top: 48px;
+  left: 38px;
+  width: 4px;
+  height: 30px;
+  background: #facc15;
+  border-radius: 999px;
+  animation: sandStream 1s ease-in-out infinite;
+}
+
+@keyframes hourglassRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  45% {
+    transform: rotate(0deg);
+  }
+
+  55% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes sandFill {
+  0% {
+    height: 4px;
+    opacity: 0.5;
+  }
+
+  50% {
+    height: 24px;
+    opacity: 1;
+  }
+
+  100% {
+    height: 4px;
+    opacity: 0.5;
+  }
+}
+
+@keyframes sandStream {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  40% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
+@media (max-width: 520px) {
+  .card {
+    padding: 36px 20px;
+    box-shadow: 8px 8px 0 #10a37f;
+  }
+
+  .brutalist-button {
+    min-width: 220px;
+    padding: 14px 18px;
+  }
+
+  .button-text span:last-child {
+    font-size: 1.25rem;
+  }
+}
